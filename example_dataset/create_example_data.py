@@ -21,6 +21,8 @@ def create_fake_episode(path):
     np.save(path, episode)
 
 
+
+
 # create fake episodes for train and validation
 print("Generating train examples...")
 os.makedirs('data/train', exist_ok=True)
