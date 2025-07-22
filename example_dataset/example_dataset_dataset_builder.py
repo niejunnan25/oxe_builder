@@ -4,7 +4,7 @@ import glob
 import numpy as np
 import tensorflow as tf
 import tensorflow_datasets as tfds
-import tensorflow_hub as hub
+# import tensorflow_hub as hub
 
 class ExampleDataset(tfds.core.GeneratorBasedBuilder):
     """DatasetBuilder for example dataset."""
@@ -17,7 +17,7 @@ class ExampleDataset(tfds.core.GeneratorBasedBuilder):
     # 初始化类时，加载 Universal Sentence Encoder 模型用于生成语言指令的嵌入
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self._embed = hub.load("https://tfhub.dev/google/universal-sentence-encoder-large/5")
+        # self._embed = hub.load("https://tfhub.dev/google/universal-sentence-encoder-large/5")
 
     # 定义数据集的信息结构，包括样本字段、类型、形状、说明等
     def _info(self) -> tfds.core.DatasetInfo:
@@ -140,7 +140,7 @@ class ExampleDataset(tfds.core.GeneratorBasedBuilder):
                     'is_last': i == (len(data) - 1),
                     'is_terminal': i == (len(data) - 1),
                     'language_instruction': step['language_instruction'],
-                    'language_embedding': language_embedding,
+                    # 'language_embedding': language_embedding,
                 })
 
             # 构造一个最终样本
